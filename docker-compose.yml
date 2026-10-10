@@ -11,7 +11,7 @@ services:
       MSSQL_PID: "Developer"
       MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?Export MSSQL_SA_PASSWORD first}
     ports:
-      - "127.0.0.1:1433:1433"
+      - "127.0.0.1:1435:1433"
     volumes:
       - studentoperations_sql_data:/var/opt/mssql
 
