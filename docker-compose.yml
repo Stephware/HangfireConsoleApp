@@ -1,0 +1,19 @@
+# Local laboratory SQL Server; image is x86-64 only.
+# On Apple Silicon this uses unsupported x86 emulation and may not start.
+# For an ARM Mac, use a remote/Windows-hosted SQL Server if it fails.
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: studentoperations-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?Export MSSQL_SA_PASSWORD first}
+    ports:
+      - "127.0.0.1:1433:1433"
+    volumes:
+      - studentoperations_sql_data:/var/opt/mssql
+
+volumes:
+  studentoperations_sql_data:
